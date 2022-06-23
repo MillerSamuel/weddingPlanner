@@ -1,0 +1,57 @@
+@{var count=0;
+bool isAttending=false;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="d-flex justify-content-around">
+        <h1>Welcome to the Wedding Planner</h1>
+        <a href="/">Logout</a>
+</body>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Wedding</th>
+            <th scope="col">Date</th>
+            <th scope="col">Guests</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Wedding w in ViewBag.allWeddings)
+        {
+            <tr>
+                <td><a href="details/@w.WeddingId">@w.WedderOne & @w.WedderTwo</a></td>
+                <td>@w.Date</td>
+                @foreach (GuestList g in w.Attendees)
+                {
+                    count++;
+                    if(g.User.UserId==Context.Session.GetInt32("user")){
+                        isAttending=true;
+                    }
+                }
+                <td>@count</td>
+                @if (isAttending==false){
+                <td><a href="/rsvp/@w.WeddingId">Rsvp</a></td>
+                }
+                else{
+                <td><a href="/unrsvp/@w.WeddingId">Un-RSVP</a></td>
+                }
+            </tr>
+            {count=0;}
+            {isAttending=false;}
+        }
+    </tbody>
+</table>
+<a href="/newWedding"><button class="m-5">Add Wedding</button></a>
+</html>

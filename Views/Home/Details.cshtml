@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+@model GuestList
+<body>
+    <div class="d-flex justify-content-between">
+        <h1> @ViewBag.OneWedding.WedderOne and @ViewBag.OneWedding.WedderTwo's Wedding</h1>
+        <a href="/Dashboard">Dashboard</a>
+        <a href="/">Logout</a>
+    </div>
+    <h3>Date: @ViewBag.OneWedding.Date</h3>
+    <h3>Guests</h3>
+    @foreach (GuestList g in ViewBag.OneWedding.Attendees)
+    {
+        <p>@g.User.FirstName  @g.User.LastName</p>
+    }
+</body> 
+</html>

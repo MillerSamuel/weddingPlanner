@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+@model Wedding
+<body>
+    <div class="d-flex justify-content-around">
+        <h1>Plan your wedding</h1>
+        <a href="/">Logout</a>
+        <a href="/Dashboard">Dashboard</a>
+        </div>
+    <form action="/addWedding" method="post">
+        <div class="form-group">
+            <label for="WedderOne">Wedder One</label>
+            <input class="form-control" asp-for="WedderOne">
+            <span asp-validation-for="WedderOne"></span>
+        </div>
+        <div class="form-group">
+            <label for="WedderTwo">Wedder Two</label>
+            <input class="form-control" asp-for="WedderTwo">
+            <span asp-validation-for="WedderTwo"></span>
+        </div>
+        <div class="form-group">
+            <label for="Date">Date</label>
+            <input class="form-control" asp-for="Date">
+            <span asp-validation-for="Date"></span>
+        </div>
+        <div class="form-group">
+            <label for="Adress">Wedding Adress</label>
+            <input class="form-control" asp-for="Adress">
+            <span asp-validation-for="Adress"></span>
+        </div>
+        <input class="m-2" type="submit" value="Create">
+    </form>
+</body>
+</html>
